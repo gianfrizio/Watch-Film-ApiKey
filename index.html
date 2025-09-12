@@ -1,0 +1,65 @@
+<!doctype html>
+<!--
+  Pagina principale - Watch Film
+  Struttura minima:
+  - header: controlli di ricerca, selezione genere e selezione filtro
+  - main: griglia dei film e paginazione
+  - template movieTemplate: markup riutilizzabile per ogni card film
+
+  Nota: lo script `src/main.js` è un modulo ES e si occupa di inizializzare
+  l'applicazione, eseguire le chiamate a TMDB e popolare la UI.
+-->
+<html lang="it">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Watch Film ApiKey</title>
+  <link rel="stylesheet" href="CSS/styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Watch Film</h1>
+      <div class="controls">
+        <!-- Campo di ricerca per titolo film -->
+        <input id="searchInput" placeholder="Cerca un film per titolo..." />
+        <!-- Select dei generi popolata dinamicamente da src/main.js -->
+        <select id="genreSelect"><option value="">Tutti i generi</option></select>
+        <!-- Select per scegliere il filtro principale (popolari/novità/..) -->
+        <select id="filterSelect" title="Seleziona filtro">
+          <option value="popular" selected>Popolari</option>
+          <option value="discover">Novità</option>
+          <option value="top_rated">Più votati</option>
+          <option value="upcoming">In arrivo</option>
+        </select>
+      </div>
+    </header>
+
+    <!-- Mettiamo la paginazione subito sotto l'header per consentire
+         all'utente di cambiare pagina prima di vedere i risultati -->
+    <div class="pagination-row">
+      <div id="pagination" class="pagination"></div>
+      <div id="filterIndicator"></div>
+    </div>
+
+    <main>
+      <!-- Griglia principale dove vengono renderizzati i film -->
+      <div id="movies" class="movies-grid"></div>
+    </main>
+
+    <!-- Template per una singola card film. Clonato via JS per ogni film. -->
+    <template id="movieTemplate">
+      <article class="movie">
+        <!-- Wrapper per il trailer (inserito in iframe al primo hover) -->
+        <div class="trailer-wrapper" aria-hidden="true"></div>
+        <img class="poster" alt="Poster" />
+        <div class="movie-info">
+          <h3 class="title"></h3>
+          <p class="date"></p>
+          <p class="overview"></p>
+        </div>
+      </article>
+    </template>
+
+  <script type="module" src="src/main.js"></script>
+  </body>
+</html>
