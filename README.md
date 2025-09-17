@@ -10,9 +10,11 @@ Struttura del progetto
 
 Config
 
-Metti la tua chiave in `config.js` alla radice del repository e assicurati che sia ignorata da Git.
+Questo progetto richiede un file `config.js` alla radice che esporti la tua API key TMDB.
 
 - `config.js` (root) — modulo ES con `export const TMDB_API_KEY = '...';`.
+
+Nota di sicurezza: per facilitare lo sviluppo locale il progetto può includere `config.js` nel repository, ma NON è sicuro committare chiavi sensibili in un repository pubblico. Per deploy in produzione sposta le chiamate API su un backend che nasconda la chiave o utilizza meccanismi di secret management (es. variabili d'ambiente nei workflow CI/CD, servizi di secret manager).
 
 Setup rapido
 
